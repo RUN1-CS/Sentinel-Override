@@ -1,42 +1,68 @@
-This is a little game called Sentinel Override. <br>
-It works in your terminal using necurses.
+# Sentinel Override
 
-What is it about?
----
-For now you can move using W,A,S,D, shoot with SPACE and create asteroids using C. <br>
-Avoiding and shooting asteroids and getting ready for new updates! <br>
+A terminal-based space shooter game built with C++ and ncurses.
 
-What to expect?
----
-You can expect shooting, abilites and enemies.
+## About
 
-Goal of the game?
----
-SURVIVE
-Avoid asteroids.
-Shoot asteroids.
+Sentinel Override is an action-packed game where you defend yourself against waves of asteroids in your terminal. Move, shoot, and survive!
 
-How To Run
----
-First install C++ compiler if not installed. <br>
-<code>sudo apt update
-sudo apt install build-essential</code> <br>
-<code>sudo dnf isntall gcc-g++</code> <br>
-<code>sudo pacman -S base-devel</code> <br>
+## Gameplay
 
-Second install ncurse if not installed. <br>
-<code>sudo apt install libncurses5-dev libncursesw5-dev</code> <br>
-<code>sudo dnf install ncurses-devel</code> <br>
-<code>sudo pacman -S ncurses</code> <br>
+**Controls:**
 
-To compile the game run this: <br>
-<code>g++ -std=c++17 -O2 main.cpp -o "Sentinel Override -lncurses -pthread</code> <br>
+- **W/A/S/D** - Move
+- **SPACE** - Shoot
+- **C** - Create asteroids
 
-And the last step is just to run it. <br>
-<code>./Sentinel\ Override</code> <br>
+**Objective:** Survive by avoiding and destroying asteroids. Prepare for upcoming enemies and abilities!
 
-Support Me!
----
+## What's Next?
+
+Expect new features including:
+
+- Special abilities
+- Enemy encounters
+- Enhanced gameplay mechanics
+
+## Installation & Setup
+
+### Prerequisites
+
+**Install C++ Compiler:**
+
+```bash
+# Debian/Ubuntu
+sudo apt update
+sudo apt install build-essential
+
+# Fedora
+sudo dnf install gcc-g++
+
+# Arch
+sudo pacman -S base-devel
+```
+
+**Install ncurses:**
+
+```bash
+# Debian/Ubuntu
+sudo apt install libncurses5-dev libncursesw5-dev
+
+# Fedora
+sudo dnf install ncurses-devel
+
+# Arch
+sudo pacman -S ncurses
+```
+
+### Compile & Run
+
+```bash
+g++ -std=c++17 -O2 main.cpp -o "Sentinel Override" -lncurses -pthread
+./Sentinel\ Override
+```
+
+## Support
+
 <a href="https://patreon.com/RUN1_IT">
-<img src="https://c5.patreon.com/external/favicon/rebrand/pwa-192.png" alt="Patreon" height="16" width="16">Patreon</a>
-- Support me on Patreon for exclusive content.
+<img src="https://c5.patreon.com/external/favicon/rebrand/pwa-192.png" alt="Patreon" height="16" width="16"> Support me on Patreon</a> for exclusive content!
