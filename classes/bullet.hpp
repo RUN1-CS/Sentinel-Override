@@ -11,10 +11,10 @@ public:
 
   void update(std::vector<asteroid> &asteroids);
 
-  inline int getX() const { return x; };
-  inline int getY() const { return y; };
-  inline bool hasHit() const { return hit; };
-  inline bool isOutOfBounds() const { return y < 0; };
+  inline int getX() const { return x; }
+  inline int getY() const { return y; }
+  inline bool hasHit() const { return hit; }
+  inline bool isOutOfBounds() const { return y < 0; }
 
 private:
   bool checkCollision(std::vector<asteroid> &asteroids);
