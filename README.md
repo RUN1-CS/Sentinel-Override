@@ -58,8 +58,8 @@ sudo pacman -S ncurses
 ### Compile & Run
 
 ```bash
-g++ -std=c++17 -O2 main.cpp -o "Sentinel Override" -lncurses -pthread
-./Sentinel\ Override
+make
+make run
 ```
 
 ## Support

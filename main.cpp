@@ -8,9 +8,9 @@
 #include <thread>
 #include <string>
 
-#include "asteroid.hpp"
-#include "bullet.hpp"
-#include "player.hpp"
+#include "classes/asteroid.hpp"
+#include "classes/bullet.hpp"
+#include "classes/player.hpp"
 
 using namespace std;
 
@@ -54,50 +54,46 @@ int main(){
     }
 
     try{
-        double * ptr = &frame;
         bool game_over = false;
         while(true){
             clear();
             p.draw();
 
-            int index = 0;
             for(auto it = asteroids.begin(); it != asteroids.end(); ){
-                if(!it->status){
-                    mvprintw(it->y, it->x, "O");
-                }else if(it->status == 1){
-                    mvprintw(it->y, it->x, "X");
-                    it->status = 2;
-                }else if(it->status == 2){
-                    asteroids.erase(asteroids.begin() + index);
+                if(it->isActive()){
+                    mvprintw(it->getY(), it->getX(), "O");
+                    ++it;
+                }else if(it->isDestroyed()){
+                    mvprintw(it->getY(), it->getX(), "X");
+                    it->deactivate();
+                    ++it;
+                }else if(it->isInactive()){
+                    it = asteroids.erase(it);
                     frame += 10;
                 }
                 refresh();
-                ++it;
-                index++;
             }
 
-            index = 0;
             for (auto& a : asteroids) {
-                a.update(asteroids, *ptr);
+                a.update(asteroids, frame);
 
-                for(int i = 0; i <= a.speed; i++){
-                    if(p.x == a.x && p.y == a.y - i){
+                for(int i = 0; i <= a.getSpeed(); i++){
+                    if(p.getX() == a.getX() && p.getY() == a.getY() - i){
                         game_over = true;
                     }
                 }
-                index++;
             }
 
-            index = 0;
             for(auto it = bullets.begin(); it != bullets.end(); ){
                 it->update(asteroids);
-                mvprintw(it->y, it->x, "|");
+                if (!it->isOutOfBounds()) {
+                    mvprintw(it->getY(), it->getX(), "|");
+                }
 
-                if(it->y < 0 || it->hit){
-                    bullets.erase(bullets.begin() + index);
+                if(it->isOutOfBounds() || it->hasHit()){
+                    it = bullets.erase(it);
                 }else{
                     ++it;
-                    index++;
                 }
                 refresh();
             }
@@ -115,7 +111,7 @@ int main(){
             else if (ch == 'a') p.move(-1, 0);
             else if (ch == 'd') p.move(1, 0);
             else if (ch == ' '){
-                bullets.emplace_back(p.x, p.y - 1, 1);
+                bullets.emplace_back(p.getX(), p.getY() - 1, 1);
             }
 
             if(ch == 'c'){
@@ -141,11 +137,11 @@ int main(){
 
             frame++;
 
-            if(static_cast<int>(*ptr) % 500 == 0){
+            if(static_cast<int>(frame) % 500 == 0){
                 for(int i = 0; i < 10; ++i) {
                     asteroids.emplace_back(dis_x(gen), dis_y(gen), dis_ss(gen), dis_ss(gen));
                 }
-            }else if(static_cast<int>(*ptr) % 100 == 0){
+            }else if(static_cast<int>(frame) % 100 == 0){
                 for(int i = 0; i < 5; ++i){
                     asteroids.emplace_back(dis_x(gen), dis_y(gen), dis_ss(gen), dis_ss(gen));
                 }
