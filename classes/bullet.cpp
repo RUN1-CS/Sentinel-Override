@@ -14,22 +14,6 @@ void bullet::update(std::vector<asteroid>& asteroids) {
     }
 }
 
-int bullet::getX() const {
-    return x;
-}
-
-int bullet::getY() const {
-    return y;
-}
-
-bool bullet::hasHit() const {
-    return hit;
-}
-
-bool bullet::isOutOfBounds() const {
-    return y < 0;
-}
-
 bool bullet::checkCollision(std::vector<asteroid>& asteroids) {
     for (auto& current : asteroids) {
         for (int offset = 0; offset <= speed; ++offset) {

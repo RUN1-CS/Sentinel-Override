@@ -13,15 +13,3 @@ void player::move(int dx, int dy) {
     x += dx;
     y += dy;
 }
-
-void player::draw() const {
-    mvprintw(y, x, "%c", icon);
-}
-
-int player::getX() const {
-    return x;
-}
-
-int player::getY() const {
-    return y;
-}

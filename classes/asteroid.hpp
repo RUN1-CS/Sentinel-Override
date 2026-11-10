@@ -11,12 +11,12 @@ public:
 
     void update(const std::vector<asteroid>& asteroids, double frame);
 
-    int getX() const;
-    int getY() const;
-    int getSpeed() const;
-    bool isActive() const;
-    bool isDestroyed() const;
-    bool isInactive() const;
+    inline int getX() const { return x; };
+    inline int getY() const { return y; };
+    inline int getSpeed() const { return speed; };
+    inline bool isActive() const { return state == status::active; };
+    inline bool isDestroyed() const { return state == status::destroyed; };
+    inline bool isInactive() const { return state == status::inactive; };
     void destroy();
     void deactivate();
 

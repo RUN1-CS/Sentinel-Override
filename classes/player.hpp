@@ -7,9 +7,9 @@ class player {
 public:
     player(int x, int y);
     void move(int dx, int dy);
-    void draw() const;
-    int getX() const;
-    int getY() const;
+    inline void draw() const { mvprintw(y, x, "%c", icon); };
+    inline int getX() const { return x; };
+    inline int getY() const { return y; };
 
 private:
     int x;
